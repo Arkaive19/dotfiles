@@ -1,0 +1,27 @@
+(defwidget spacefillervr []
+  (box :vexpand true
+       :class "fillerr"
+  )
+)
+(defwidget spacefillervl []
+  (box :vexpand true
+       :class "fillerl"
+  )
+)
+(defwidget spacefillerh []
+  (box :hexpand true
+       :vexpand false
+       :class "filler"
+  )
+)
+(defwidget spacefillerhr []
+  (box :hexpand true
+       :class "fillerrs"
+  )
+)
+
+(defwidget spacefillerhl []
+  (box :hexpand true
+       :class "fillerls"
+  )
+)

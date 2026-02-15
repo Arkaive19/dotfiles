@@ -1,0 +1,24 @@
+@import "/home/arkaive19/.cache/wal/colors.scss";
+button {
+  border: 0px;
+  background: transparent;
+}
+
+slider {
+  all: unset;
+}
+
+tooltip {
+  background-color: #14171c;
+  color: $color1;
+  font-family: Inconsolata SemiCondensed Medium;
+  font-weight: Bold;
+  font-size: 1rem;
+}
+$groundmix: mix($foreground, $background, 0%);
+
+@import "cheatsheet/cheatsheet.scss";
+@import "bar/bar.scss"
+@import "player/player.scss"
+@import "loadout/loadout.scss";
+@import "widgets/corners/corners.scss"

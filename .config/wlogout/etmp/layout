@@ -1,0 +1,37 @@
+{
+    "label" : "shutdown",
+    "action" : "systemctl poweroff",
+    "text" : "Shutdown",
+    "keybind" : "s"
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "Reboot", 
+    "keybind" : "r"
+}
+{
+    "label" : "logout",
+    "action" : "loginctl kill-session $XDG_SESSION_ID",
+    "text" : "Logout",
+    "keybind" : "e"
+}
+{
+    "label" : "restart_hyprland",
+    "action" : "hyprctl dispatch exit",
+    "text" : "Restart Hyprland",
+    "keybind" : "h"
+}
+{
+    "label" : "sleep",
+    "action" : "systemctl suspend",
+    "text" : "Sleep",
+    "keybind" : "u"
+}
+{
+    "label" : "lock",
+    "action" : "hyprlock", 
+    "text" : "Lock",
+    "keybind" : "l"
+}
+

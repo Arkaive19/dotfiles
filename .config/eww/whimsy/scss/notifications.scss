@@ -1,0 +1,35 @@
+.notibody {
+  margin: $margin;
+  padding: $padding;
+}
+
+.notihead {
+  padding: $padding;
+  background-color: $surface0;
+  border-top-left-radius: $round+8px;
+  border-top-right-radius: $round+8px;
+}
+
+.notiimage {
+  transition: 500ms ease;
+  border-radius: $round;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: $margin;
+  opacity: 1.0;
+}
+
+.notiprog {
+  // transition: padding 6050ms linear;
+  background-color: $accent;
+  padding: 2px 440px 2px 0px;
+  animation-duration: 6200ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes notiproganim {
+  from {padding: 2px 440px 2px 0px;}
+  to {padding: 2px 0px 2px 0px;}
+}

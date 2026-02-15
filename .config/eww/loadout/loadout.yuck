@@ -1,0 +1,261 @@
+;; Written by @arkaive19
+
+(defpoll hour :interval "10m" "date +%H")
+(defpoll min :interval "30s" "date +%M")
+
+(defpoll calendar_day :interval "10h" "date '+%d'")
+(defpoll calendar_month :interval "10h" "date '+%m'")
+(defpoll calendar_year :interval "10h" "date '+%Y'")
+(defpoll month_year :interval "10h" "date '+%B %Y'")
+
+(defpoll pkg :interval "1h" "pacman -Q | wc -l")
+
+(defpoll uptime_days
+  :interval "30s"
+  "uptime -p | perl -ne 'print /(\\d+)\\s+day/ ? \"$1 days\" : \"0 days\"'")
+
+(defpoll uptime_hours
+  :interval "30s"
+  "uptime -p | perl -ne 'print /(\\d+)\\s+hour/ ? \"$1 hours\" : \"0 hours\"'")
+
+(defpoll uptime_mins
+  :interval "30s"
+  "uptime -p | perl -ne 'print /(\\d+)\\s+minute/ ? \"$1 mins\" : \"0 mins\"'")
+
+
+
+(defpoll weathericon :interval "15m" "loadout/scripts/weather icon")
+(defpoll weathercity :interval "15m" "loadout/scripts/weather city")
+(defpoll weathertemp :interval "15m" "loadout/scripts/weather current_temp")
+(defpoll weatherdesc :interval "15m" "loadout/scripts/weather weather_desc")
+(defpoll weatherhex  :interval "15m" "loadout/stats/scripts/weather hex")
+
+(defpoll username :interval "24h" "whoami")
+(defpoll hostname :interval "24h" "cat /etc/hostname")
+(defpoll uptime :interval "30s" "uptime -p | sed -E -e 's/hour(s)?/hrs/g' -e 's/minute(s)?/min/g'")
+
+;;========================;;
+;;--Eventbox Declaration--;;
+;;========================;;
+
+(defwidget loadout-eb []
+ (eventbox :onhoverlost "eww open loadout --toggle"
+                        (loadout-widget)
+ )
+)
+
+
+;;====================;;
+;;--Compiling Widget--;;
+;;====================;;
+
+(defwidget loadout-widget []
+            (box :class "loadout"
+                 :orientation "v"
+                 :space-evenly "false"
+                  (loadout-top)
+                  (loadout-mid)
+                  (loadout-end)
+           )
+)
+;;===============================;;
+;;--Sub Sections Of Main Widget--;;
+;;===============================;;
+
+
+(defwidget loadout-top []
+ (box :class "loadout-top"
+      :orientation "h"
+      :space-evenly "false"
+      (profile-widget)
+      (stats-widget)
+
+ )
+)
+
+(defwidget loadout-mid []
+ (box :class "loadout-top"
+      :orientation "h"
+      :space-evenly "false"
+       (clock-widget)
+       (calendar-widget)
+       (panel-widget)
+ )
+)
+
+(defwidget loadout-end []
+ (box :class "loadout-top"
+      :orientation "h"
+      :space-evenly "false"
+ )
+)
+
+;;============;;
+;;--Widgets--;;
+;;============;;
+
+(defwidget calendar-widget[]
+ (box :class "calendar-widget"
+      :orientation "v"
+       (box :class "cal-box"
+			  		:orientation "v"
+			  		:space-evenly "false"
+			    		(label :class "month-year"
+                     :text month_year
+              )
+				    	(box :class "day-names"
+                   :orientation "h"
+                   :space-evenly "true"
+					        	(label :text "Su")
+         						(label :text "Mo")
+			        			(label :text "Tu")
+	        					(label :text "We")
+				         		(label :text "Th")
+		        				(label :text "Fr")
+					         	(label :text "Sa")
+					    )
+					    (calendar :class "cal" 
+					            	:show-details false
+                        :show-heading false
+                        :show-day-names false
+						            :day calendar_day
+                        :month calendar_month
+                        :year calendar_year
+              )
+				)
+			)
+)
+
+(defwidget clock-widget[]
+ (centerbox :orientation "v"
+            :class "clock-widget"
+            :space-evenly false
+            :vexpand true
+            (label :text "")
+            (box :orientation "v"
+                 :class "clock-box"
+                  (label :class "clock-time"  :text "${hour}")
+                  (label :class "clock-divider" :text "•••")
+                  (label :class "clock-time"  :text "${min}") 
+            )
+            (label :text "")
+  )
+)
+
+(defwidget panel-widget[]
+ (box  :orientation "v"
+       :class "panel-widget"
+       (box :orientation "v"
+              :class "panel-top" 
+              (label :class "" :halign "start" :text "󰣇 : Arch Linx")
+              (label :class "" :halign "start" :text "󰮯 : ${pkg} pkgs") 
+				      (label :class "" :halign "start" :text "󱪳 : Hyprland")
+        )
+        (box :orientation "h"
+             :class "panel-mid"
+             :space-evenly "false"
+             :spacing 20
+              (label :class "panel-ut-icon" :halign "end"  :text "")
+              (box :orientation "v"
+                   :space-evenly false
+                   :valign "center"
+                    (label :class "" :halign "start" :text uptime_days)
+                    (label :class "" :halign "start" :text uptime_hours)
+                    (label :class "" :halign "start" :text uptime_mins)
+              )
+        )
+        (box :orientation "h"
+             :class "panel-end"
+         )
+  )
+)
+
+(defwidget weather-widget[]
+  (box :orientation "h"
+       :class "weather-widget"
+       :space-evenly false
+       (label :class "weather-icon" :text "${weathericon}")
+       (box :orientation "v"
+            :valign "center"
+            :class "weather-data"
+            :space-evenly false
+            (label :class "weather-temp" :text "${weathertemp}°C")
+            (label :halign "start" :class "weather-desc" :text weatherdesc) 
+       )
+  )
+)
+
+(defwidget profile-widget[]
+  (box :orientation "h"
+       :class "profile-widget"
+       :space-evenly false
+       (box :class "face"
+			      :halign "center"
+       )
+       (weather-widget)
+  )
+)
+
+(defwidget stats-widget[]
+  (box :orientation "v"
+       :hexpand true
+       :class "stats-widget"
+       :space-evenly true
+        (system_progress :css "ram"
+                         :halign "end"
+                         :valign "start"
+                         :tip "RAM ${round(EWW_RAM.used_mem / 1048576, 2)}MB"
+                         :data {round(EWW_RAM.used_mem_perc, 0)}
+                         :icon ""
+                         :cssl "ram-label"
+        )
+        (system_progress :css "disk"
+                         :halign "end"
+                         :valign "end"
+                         :tip "SSD ${round(EWW_DISK['/'].used_perc, 2)}%"
+                         :data {round(EWW_DISK['/'].used_perc, 0)}
+                         :icon ""
+                         :cssl "disk-label"
+        )
+        (system_progress :css "cpu"
+                         :halign "end"
+                         :valign "start"
+                         :tip "CPU ${round(EWW_CPU.avg,0)}%"
+                         :data {round(EWW_CPU.avg, 0)}
+                         :icon ""
+                         :cssl "cpu-label"
+        )
+  )
+)
+
+(defwidget system_progress [data icon css cssl tip]
+  (box  :class "progress"
+        :space-evenly false
+        :orientation "h"
+        :spacing 20
+         (label :class cssl
+                :text icon
+         )
+         (progress :class css
+                   :value data
+                   :valign "center"
+                   :thickness 12
+                   :tooltip tip
+                   :width 200
+         )   
+  )
+)
+
+;;============;;
+;;--Window--;;
+;;============;;
+(defwindow loadout
+    :geometry
+     (geometry :x "0%"
+               :y "3%" 
+               :anchor "top center"
+     )
+    :wm-ignore true
+    :monitor "0"
+     (loadout-eb)
+)

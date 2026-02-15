@@ -1,0 +1,305 @@
+(defpoll volume :interval "0.1s" "pamixer --get-volume")
+(defpoll brightness :interval "0.1s" "brightnessctl g")
+
+(defpoll lithour :interval "30m" "date +%H")
+(defpoll litmin :interval "30s" "date +%M")
+
+
+
+
+(defwidget bar-time-cnt []
+  (box :orientation "v" :space-evenly false :tooltip "Calendar" 
+    (eventbox :onclick "eww open date --toggle"
+      (box :orientation "v"
+           :space-evenly false
+           :valign "center"
+           :class "bar-time-cnt"
+              (label :class "bar-time" :text "${lithour}")
+              (label :class "bar-time" :text "••")
+              (label :class "bar-time" :text "${litmin}")
+      )
+    )
+  
+  )
+)
+
+
+(defwidget play-back []
+  (box :orientation "v"
+       :space-evenly false
+       :class "music-area"
+       :tooltip "Music Player"
+        (eventbox :onclick "eww open music --toggle"
+         (box :orientation "v"
+              :space-evenly false
+              :valign "center"
+              :class "bar-play-cnt"
+               (label :class "bar-play" :text "󰠃")
+         )
+        )
+  )
+)
+
+(defvar workspaceSn "[1,2,3,4,5,6,7,8,9,10]")
+(deflisten active_wsp :initial 1
+   `~/.config/eww/bar/scripts/workspace`)
+ ;; `stdbuf -oL inotifywait -m -e modify /tmp/current_workspace | while read -r _; do cat /tmp/current_workspace; done`
+
+
+(defwidget workspaces []
+  (box :orientation "v"
+       :space-evenly false
+       :class "workspaces"   
+       :tooltip "Workspaces"
+         (box :orientation "v"
+              :space-evenly true
+              :class "bar-wsp-cnt"
+               (for entry in workspaceSn
+                (button :class "active"
+                        :onclick "hyprctl dispatch workspace ${entry}"
+                         (label :class "wsp-play ${ entry == active_wsp ? 'wsp-active' : ' ' }"
+                                :text "${ entry == active_wsp ? '' : '' }"
+                                :tooltip "Workspace ${entry}"
+                         )
+                )
+               )
+         )
+  )
+)
+
+(defpoll battery :interval "1s"	"./bar/scripts/battery icon")
+(defpoll battery-cappacity	:interval "1s"	"./bar/scripts/battery percent")
+
+(defwidget bat []
+	(box :orientation "v"
+		   :space-evenly "false"
+       :class "bat-cnt"
+        :tooltip "Battery: ${battery-cappacity}%"
+	      (label :class "bat"		
+			         :text battery 
+        )
+        (label :class "bat-text"		
+			         :text {battery-cappacity}
+        )
+  )
+)
+
+(defpoll wifi-icon :interval "1s" "./bar/scripts/wifi icon")
+(defpoll wifi-name :interval "1s" "./bar/scripts/wifi name")
+
+
+(defwidget notification []
+  (box :orientation "v"
+       :space-evenly false
+       :class "noti-area"
+         :tooltip "notifications"
+        (eventbox :onclick "swaync-client -t"
+         (box :orientation "v"
+              :space-evenly false
+              :valign "center"
+              :class "noti-cnt"
+               (label :class "noti-btn" :text "")
+         )
+        )
+  )
+)
+
+(defwidget profile-card-area []
+  (box :orientation "v"
+       :space-evenly false
+       :class "profile-area"
+       :tooltip "Profile"
+        (eventbox :onclick "eww open stats  --toggle"
+         (box :orientation "v"
+              :space-evenly false
+              :valign "center"
+              :class "profile-cnt"
+              (button :onclick "eww open loadout --toggle"
+               (label :class "profile-btn" :text "")
+              )
+         )
+        )
+  )
+)
+
+(defvar bright false)
+(defpoll current-bright :interval "1s" "brightnessctl g")
+(defwidget bright []
+  (eventbox :onhover "eww update bright=true"   
+  		    	:onhoverlost "eww update bright=false"
+            :class "bright-box"
+             :tooltip "Brightness ${current-bright}%"
+  			     (box :orientation "v"  
+			  		      :space-evenly "false"  
+					        :spacing 2
+                  :class "bright-box-cnt"
+  		 	           (revealer :transition "slideup" 
+			  		                 :reveal bright   
+					                   :duration "550ms"
+  	                               (eventbox :cursor "pointer"
+                                             :class "brightness-bar" 
+                                              (scale :min 0
+                                                     :max 101
+                                                     :value current-bright 
+                                                     :orientation "v"
+                                                     :flipped true
+                                                     :onchange "brightnessctl set {}"
+                                              ) 
+                                   ) 
+                    )
+  			           (label :class "brightness-icon" 
+			  	                :text "󰃠"
+                   )
+                   (label :class "brightness-text" 
+			  	                :text current-bright
+                   )
+             )
+  )
+)
+
+(defvar loud false)
+(defpoll current-vol :interval "1s" "pamixer --get-volume")
+(defpoll vol-icon :interval "5s" "./bar/scripts/audio.sh symbol")
+
+(defwidget loud []
+  (eventbox :onhover "eww update loud=true"   
+  		    	:onhoverlost "eww update loud=false"
+            :class "loud-box"
+            :tooltip "Volume ${current-vol}%"
+  			     (box :orientation "v"  
+			  		      :space-evenly "false"  
+					        :spacing 2
+                  :class "loud-box-cnt"
+  		 	           (revealer :transition "slideup" 
+			  		                 :reveal loud 
+					                   :duration "550ms"
+  	                               (eventbox :cursor "pointer"
+                                             :class "volume-bar" 
+                                              (scale :min 0
+                                                     :max 101
+                                                     :value current-vol 
+                                                     :orientation "v"
+                                                     :flipped true
+                                                     :onchange "pamixer --set-volume {}"
+                                              ) 
+                                   ) 
+                    )
+  			           (label :class "loud-icon" 
+			  	                :text vol-icon
+                   )
+                   (label :class "loud-text" 
+			  	                :text current-vol
+                   )
+             )
+  )
+)
+
+
+
+
+
+(defwidget tray []
+ (box :class "tray" 
+    (systray :orientation 'v'
+             :icon-size 18
+             :spacing 10
+    )
+ )
+)
+
+(defwidget bar-top []
+ (box :class "bar-top"
+      :orientation "v"
+      :space-evenly "false"
+      :vexpand true
+       (top-widget)
+       (spacefillervr)
+  )
+)
+
+(defwidget bar-mid []
+ (box :class "bar-top"
+      :orientation "v"
+      :space-evenly "false"
+      :vexpand true
+      (mid-widget)
+ )
+)
+
+(defwidget bar-bottom []
+ (box :class "bar-top"
+      :orientation "v"
+      :space-evenly "false"
+      :vexpand true
+   (spacefillervr)
+   (bottom-widget)
+  )
+)
+
+(defwidget bar-widget []
+      (centerbox :orientation "v"
+           :space-evenly false
+            :class "bar"
+            (bar-top)
+            (bar-mid)
+            (bar-bottom)
+      )
+)
+
+(defwidget top-widget []
+  (box :orientation "v"
+       :space-evenly false
+       :class "bar-wid-cnt top"
+       (bar-time-cnt)
+       (play-back)
+       (tray)
+  )
+)
+
+(defwindow fakecorner
+  :geometry (geometry 
+              :x "0%"
+              :y "0%"
+              :width "98%"
+              :height "100%"
+              :anchor "bottom left")
+              
+  :stacking "bottom"
+  :exclusive false
+  :monitor "0"
+  :wm-ignore false
+  (box 
+    :class "fakecorner"
+  )
+)
+
+
+(defwidget mid-widget []
+  (box :orientation "v"
+       :space-evenly false
+       :class "bar-wid-cnt mid"
+        (profile-card-area)
+        (workspaces)
+        (notification)
+  )
+)
+
+(defwidget bottom-widget []
+  (box :orientation "v"
+       :space-evenly false  
+       :class "bar-wid-cnt bottom"
+        (bat)
+        (loud)
+        (bright)
+  )
+)
+
+
+(defwindow bar
+  :monitor "0"
+  :stacking "fg"
+  :geometry (geometry :x "0%" :y "0%" :width "25px" :height "100%" :anchor "center left")
+  :reserve (struts :distance "40px" :side "left")
+  :exclusive true
+(bar-widget))
+

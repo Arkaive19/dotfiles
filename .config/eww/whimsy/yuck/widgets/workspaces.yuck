@@ -1,0 +1,22 @@
+
+(defwidget workspaces []
+  (box 
+    ; :class "widget ${ locked ? 'top' : 'float' }"
+    :class "widget"
+    :orientation "h"
+    :space-evenly false
+    (for i in {"[0, 1, 2, 3, 4]"}
+      (tooltip
+        (workspacebox :i i :spaced true)
+
+        (button 
+            :onclick "swaymsg -t command workspace number ${workspacejson[i].name}"
+            :onrightclick '${ !revealcalint && !revealdashint ? "./scripts/hackslide overviewint revealoverviewint &" : ""}'
+          (box
+            :class "wspill ${ 
+              workspacejson[i].focused 
+              ? 'focused' 
+              : workspacejson[i].empty 
+              ? 'inactive'
+              : 'active'}"))))))
+          

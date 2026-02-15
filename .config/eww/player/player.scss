@@ -1,0 +1,133 @@
+.music{
+background:transparent;
+}
+
+
+.player{
+  font-family: "JetBrains Mono Medium", "Material Design Icons Desktop";
+  background:$background;
+  padding: 1rem;
+  min-height: 15rem;
+  border-radius: 0.6em;
+
+  .player-art {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 0 0.3rem black;
+    border-radius: 1.2rem;
+    min-width: 28rem;
+
+    .player-info {
+      border-radius: 1rem;
+      background: linear-gradient(
+        to right,
+        rgb(#191919, 1),
+        rgba(#262626, 0.5)
+      );
+      padding: 0.65rem 1rem;
+      .top-icons {
+        font-size: 2rem;
+      }
+      .player-shuffle,
+      .player-loop {
+        font-size: 3rem;
+        text-shadow: 0 0 0.2rem black;
+      }
+
+      .spotify-icon {
+        font-size: 2rem;
+        color: $color5;
+        text-shadow: 0 0 0.2rem black;
+      }
+
+      .mpd-icon {
+        font-size: 2rem;
+        color: $color2;
+        text-shadow: 0 0 0.2rem black;
+      }
+
+      .player-title {
+        font-style: italic;
+        font-family: Cartograph CF;
+        font-size: 1.7rem;
+        font-weight: bold;
+        color: $foreground;
+        text-shadow: 0 0 0.5rem rgba($color: $color0, $alpha: 0.5);
+      }
+
+      .player-artist {
+        font-family: JetBrainsMono NF;
+        font-weight: bolder;
+        font-size: 1rem;
+        color: $foreground;
+        text-shadow: 0 0 0.5rem rgba($color: $color0, $alpha: 0.5);
+      }
+
+      .player-time {
+        font-family: Cartograph CF;
+        font-size: 1rem;
+        color: $foreground;
+        text-shadow: 0 0 0.5rem rgba($color: $color0, $alpha: 0.5);
+      }
+
+      .player-bar scale trough highlight {
+        all: unset;
+        background-image: linear-gradient(
+          to right,
+          darken($color: $color5, $amount: 15%),
+          $color5
+        );
+        border-radius: 2rem;
+      }
+
+      .player-bar scale trough {
+        all: unset;
+        background-color: rgba($foreground, 0.3);
+        box-shadow: 0px 0px 2px 1px rgba(black, 0.5);
+        border-radius: 1rem;
+        min-height: 0.35rem;
+        margin: 0rem 0.2rem 0.2rem 0rem;
+      }
+
+      .player-position {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: $foreground;
+      }
+    }
+  }
+
+  .min {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 1.5rem;
+    padding: 0 0.9rem;
+    color: #f7768e;
+  }
+
+  .min:hover {
+    color: #f7768e;
+  }
+
+  .player-controls {
+    padding: 0rem 0.7rem 0rem 1rem;
+    border-radius: 1rem;
+
+    .player-toggle {
+      font-size: 1.6rem;
+      color: $foreground;
+    }
+
+    .player-previous,
+    .player-next {
+      font-size: 2rem;
+      color: $foreground;
+    }
+
+    button {
+      &:hover {
+        color: $color2;
+      }
+    }
+  }
+}

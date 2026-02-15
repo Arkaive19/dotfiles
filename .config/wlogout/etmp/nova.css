@@ -1,0 +1,86 @@
+*{
+color:#ffffff;
+}
+
+window {
+    background-color: rgba(0, 0, 0, 0.7); /* Dark tinted background */
+}
+
+/* Main button style */
+button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20%;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.5s ease-in;
+    box-shadow: 0 0 10px 2px transparent;
+    border-radius: 36px;
+    margin: 10px;
+    color: transparent;
+    border: none;
+    min-height: 80px;
+    min-width: 80px;
+    
+    /* Add border */
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+button:focus {
+    box-shadow: none;
+    background-size: 20%;
+    background-color: rgba(21,21,21,0.7);
+    border-color: rgba(255, 255, 255, 0.6); /* Brighter border on focus */
+    transition: all 0.5s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
+}
+
+button:hover {
+    background-size: 50%;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.6);
+    background-color: rgba(255, 255, 255, 0.2); /* Brighter on hover */
+    color: transparent;
+    border-color: rgba(255, 255, 255, 0.8); /* Brighter border on hover */
+}
+
+/* Button IDs */
+#shutdown {
+    background-image: image(url("./icons/power.png"));
+}
+#shutdown:hover {
+    background-image: image(url("./icons/power-hover.png"));
+}
+
+#logout {
+    background-image: image(url("./icons/logout.png"));
+}
+#logout:hover {
+    background-image: image(url("./icons/logout-hover.png"));
+}
+
+#reboot {
+    background-image: image(url("./icons/restart.png"));
+}
+#reboot:hover {
+    background-image: image(url("./icons/restart-hover.png"));
+}
+
+#lock {
+    background-image: image(url("./icons/lock.png"));
+}
+#lock:hover {
+    background-image: image(url("./icons/lock-hover.png"));
+}
+
+#restart_hyprland {
+    background-image: image(url("./icons/hibernate.png"));
+}
+#restart_hyprland:hover {
+    background-image: image(url("./icons/hibernate-hover.png"));
+}
+
+#sleep {
+    background-image: image(url("./icons/sleep.png"));
+}
+#sleep:hover {
+    background-image: image(url("./icons/sleep-hover.png"));
+}

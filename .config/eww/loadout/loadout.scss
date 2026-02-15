@@ -1,0 +1,175 @@
+.loadout {
+  background-color: rgba($background, 0.1);
+  min-width: 30rem;
+  padding: 1rem;
+  border-radius: 2rem;
+}
+
+calendar {
+  font-family: JetBrainsMono NF;
+  font-weight: bold;
+
+  &:selected {
+    color: $color3;
+  }
+  &:indeterminate {
+    color: rgba(205, 219, 249, 0.3);
+  }
+}
+
+.calendar-widget {
+  background-color: $background;
+  border-radius: 10px;
+  margin: 0.4em;
+
+  .cal-box {
+    background-color: $background;
+    border-radius: inherit;
+
+    padding: 0.5em;
+    margin: 1em;
+
+    .month-year {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0.5em 0em 0em;
+    }
+
+    .day-names {
+      margin: 1em 1em 0em;
+      font-size: 14px;
+      font-weight: bold;
+      color: #96d6b0;
+    }
+
+    .cal {
+      border: 0px;
+      background-color: $background;
+      padding: 1em 0.75em 0em;
+    }
+  }
+}
+
+.clock-widget {
+  background-color: $background;
+  border-radius: 10px;
+  margin: 0.4em 0em 0.4em 0.4em;
+
+  .clock-box {
+    background-color: $background;
+    padding: 0.5em;
+    margin: 1em;
+    min-width: 4em;
+
+    .clock-time {
+      font-size: 2.5em;
+    }
+
+    .clock-divider {
+      font-size: 1.7em;
+    }
+  }
+}
+
+.panel-widget {
+  > * {
+    min-width: 9em;
+    padding: 0.3em;
+  }
+
+  .panel-top {
+    background-color: $background;
+    margin: 0.4em 0.4em 0em 0em;
+    border-radius: 10px;
+
+    > * {
+      padding: 0.3em;
+    }
+
+     label {
+      font-weight: 900;
+     }
+
+    
+  }
+  .panel-mid {
+    background-color: $background;
+    margin: 0.4em 0.4em 0.4em 0em;
+    border-radius: 10px;
+
+    > * {
+      padding: 0.2em;
+    }
+
+    .panel-ut-icon {
+      font-size: 1.5rem;
+      margin: 0 0 0 0.3em;
+    }
+  }
+  .panel-end {
+    background-color: $background;
+    margin: 0em 0.4em 0.4em 0em;
+    border-radius: 10px;
+  }
+}
+
+.weather-widget {
+  background-color: $background;
+  margin: 0.4em 0.4em 0em 0.4em;
+  border-radius: 10px;
+
+  .weather-icon {
+    padding: 0 0em 0 0.6em;
+    font-size: 2.9em;
+    font-weight: 900;
+  }
+  .weather-data {
+    padding: 0em 1em;
+    .weather-temp {
+      font-size: 2em;
+      font-weight: 900;
+    }
+
+    .weather-desc {
+      min-width: 8em;
+      font-size: 1em;
+    }
+  }
+}
+
+.stats-widget {
+  background-color: $background;
+  margin: 0.4em 0.4em 0em 0em;
+  border-radius: 10px;
+  padding: 0.6em 0.3em 0.6em 0.6em;
+
+  .progress {
+    > label {
+      font-size: 1.5em;
+    }
+
+    progressbar progress {
+      background-color: $color2;
+    }
+
+    progressbar > scale,
+    progressbar > trough {
+      min-width: 5rem;
+      background-color: rgba($foreground, 0.2);
+    }
+  }
+}
+
+.profile-widget {
+  .face {
+    min-width: 6.9em;
+    margin: 0.4em 0 0 0.4em;
+    border-radius: 10px;
+    background:
+    $background,
+      url("/home/arkaive19/.config/eww/bar/scripts/pfp.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}

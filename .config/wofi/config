@@ -1,0 +1,15 @@
+style=/home/arkaive19/.config/wofi/style.css
+xoffset=660
+yoffset=275
+show=drun
+width=600
+height=500
+always_parse_args=true
+show_all=true
+print_command=true
+layer=overlay
+insensitive=true
+allow_images=true
+columns=1
+lines=10
+prompt=whats up twin?

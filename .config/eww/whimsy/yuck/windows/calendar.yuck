@@ -1,0 +1,81 @@
+
+(defwindow calendarpopup
+  :geometry (geometry 
+              :x "20px"
+              :y "10px"
+              :width 380
+              :height 300
+              :anchor "top right")
+  :stacking "overlay"
+  :exclusive false 
+  :monitor '["eDP-1", "<primary>", 0]' 
+  (calendarstruct 
+    :class "popup"))
+
+(defvar revealcalint false)
+(defvar revealcalmode 0)
+
+(defwindow calendarint 
+  :geometry (geometry 
+              :x 0
+              :y -50 
+              :width 0 
+              :height 0 
+              :anchor "top right")
+  :focusable "ondemand"
+  :exclusive false 
+  :monitor '["eDP-1", "<primary>", 0]' 
+  (eventbox
+    :onhoverlost "./scripts/hackslide calendarint revealcalint close &"
+    (box 
+      :orientation "v"
+      :space-evenly false
+      (box
+        :orientation "h"
+        :space-evenly false 
+        :hexpand true
+        (box 
+          :orientation "v"
+          :style "margin-bottom: -2px;"
+          (box 
+            :width 50
+            :style "margin-top: ${ locked ? 50 : 10 }px; margin-bottom: -${ locked ? 50 : 10 }px;"
+            :class "fillerl")
+          (box 
+            :width 50))
+        (revealer 
+          :reveal { revealcalint}
+          :transition "slidedown"
+          (stack 
+            :selected revealcalmode
+            :transition "none"
+            (sysctl :class "barstruct left")
+            (calendarstruct :class "barstruct left"))))
+            
+
+      (box 
+        :orientation "v"
+        :space-evenly false
+        (box 
+          :orientation "h"
+          :space-evenly false 
+          :halign "end"
+          (box 
+            :width 50
+            :class "fillerl")
+          (bottomstruct :f "nah"))
+        (box 
+          :width 50 
+          :height 50 
+          :class "fillerls"
+          :style "margin-right: ${ locked ? '0px' : '10px'};")))))
+
+(defwidget calendarstruct [class] 
+  (box 
+    :class class
+    :orientation "v"
+    :space-evenly false
+    :width 380
+    (timer)
+    (datecalendar)
+    (eventnotilog)))

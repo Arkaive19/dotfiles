@@ -1,0 +1,40 @@
+;; Vars ;;
+
+;; Fetch
+
+
+;; Profile
+(defvar IMAGEP "/home/arkaive19/.config/Wallpapers/Scripts/current")
+
+;; Pacman
+(defpoll packages :interval "1h" "pacman -Q | wc -l")
+
+
+;; Temp
+(defpoll temp :interval "15s" "../eww/stats/scripts/cpuTemp")
+
+
+;; --- POLL CURRENT VOLUME ---
+
+
+
+
+
+(defwidget stats-eb []
+ (eventbox :onhoverlost "eww open stats --toggle"
+                        (loadout-widget)
+ )
+)
+
+
+(defwindow stats
+    :geometry
+     (geometry :x "0%"
+               :y "3%" 
+               :anchor "top center"
+     )
+    :wm-ignore true
+    :monitor "0"
+     (stats-eb)
+)
+

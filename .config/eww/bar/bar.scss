@@ -1,0 +1,140 @@
+.bar {
+  background: transparent;
+  color: #ffffff;
+  min-height: 80em;
+  min-width: 2.5rem;
+}
+
+.bar-wid-cnt{
+  background-color:$background;
+  padding:0.4em 0.4em;
+
+  &.top{
+   border-radius:0 0 20px 0
+  }
+  &.mid{
+   border-radius:0 20px 20px 0
+  }
+  &.bottom{
+   border-radius:0 20px 0em 0
+  }
+}
+
+.bar-time {
+  font-weight: 900;
+}
+
+.bar-time-cnt {
+  padding: 0.6rem 0rem;
+  background-color:$groundmix;
+  margin-bottom:20px;
+  border-radius:20px;
+}
+
+.bar-play-cnt {
+  background-color: $groundmix;
+  padding: 0.5rem 0rem 0 0;
+  border-radius:20px 20px 0 0;
+}
+
+.bar-play {
+  font-weight: 900;
+}
+
+.music-area {
+}
+
+.workspaces {
+  background: $groundmix;
+  padding: 0.6rem 0;
+}
+
+.wsp-play {
+}
+
+button {
+  border: 0px;
+  background: transparent;
+}
+
+.wsp-active {
+  color: $color6;
+}
+
+.tray {
+  background: $groundmix;
+  padding: 0.6rem 0;
+  border-radius:0 0 20px 20px;
+}
+
+.noti-cnt {
+  background: $groundmix;
+  padding: 0.4rem 0;
+  border-radius:0 0 20px 20px;
+}
+.noti-btn {
+}
+
+.profile-cnt {
+  background: $groundmix;
+  padding: 0.4rem 0;
+  border-radius:20px 20px 0 0;
+
+}
+.profile-btn {
+}
+
+.bat-cnt {
+  background: $groundmix;
+  padding: 0.4rem 0;
+  border-radius:20px 20px 0 0;
+}
+
+.bright-box-cnt {
+  background: $groundmix;
+  padding: 0.4rem 0;
+  border-radius: 0 0 20px 20px;
+}
+
+.brightness-icon {
+}
+
+.brightness-bar scale trough {
+  background-color: rgba($foreground, 0.2);
+  border: 2px solid $color6;
+  min-height: 10.5rem;
+  min-width: 0.5rem;
+}
+
+.loud-box-cnt {
+  background: $groundmix;
+  padding: 0.4rem 0;
+}
+
+.loud-icon {
+
+}
+
+.volume-bar highlight,
+.brightness-bar highlight {
+  all: unset;
+  background-image: linear-gradient(
+    to right,
+    darken($color: $color6, $amount: 0%),
+    $color6
+  );
+}
+
+.volume-bar scale trough {
+  background-color: rgba($foreground, 0.2);
+  border: 2px solid $color6;
+  min-height: 10.5rem;
+  min-width: 0.5rem;
+}
+
+.brightness-text,
+.loud-text,
+.bat-text {
+  font-size: 0.8rem;
+  font-weight: 900;
+}

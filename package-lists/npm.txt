@@ -1,0 +1,13 @@
+lib
+corepack
+gtop
+hkse
+http-server
+mapscii
+node-gyp
+nopt
+npm
+nvm
+pnpm
+prettier
+semver
