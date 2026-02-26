@@ -238,7 +238,6 @@
 
 (defwidget bar-widget []
       (centerbox :orientation "v"
-           :space-evenly false
             :class "bar"
             (bar-top)
             (bar-mid)
@@ -299,7 +298,7 @@
   :monitor "0"
   :stacking "fg"
   :geometry (geometry :x "0%" :y "0%" :width "25px" :height "100%" :anchor "center left")
-  :reserve (struts :distance "40px" :side "left")
+  :reserve (struts :distance "20px" :side "left")
   :exclusive true
 (bar-widget))
 

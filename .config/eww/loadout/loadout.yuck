@@ -166,6 +166,17 @@
         )
         (box :orientation "h"
              :class "panel-end"
+              (image :halign "end"
+                     :valign "end"
+                     :class "disc"
+                     :path {"/home/arkaive19/.config/eww/loadout/scripts/vinyl.png"}
+                     :image-width {100}
+                     :image-height {100}
+                     :style "
+                       animation-play-state: ${ music-status == 'Playing' ? 'running' : 'paused'};
+                       -gtk-icon-transform: rotate(0deg);
+                       animation-duration: 3s;
+                      ")
          )
   )
 )

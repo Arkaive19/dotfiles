@@ -173,3 +173,29 @@ calendar {
     background-position: center;
   }
 }
+
+@keyframes rotation {
+  0% {
+    -gtk-icon-transform: rotate(0deg);
+  }
+  100% {
+    -gtk-icon-transform: rotate(360deg);
+  }
+}
+
+
+.panel-end{
+ background: $background,
+      url("/home/arkaive19/.config/Wallpapers/Scripts/current");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation-fill-mode: none;
+  transition:1s;
+  &.disc{
+  margin:10em 10em 10em 10em;
+  animation: rotation 5s linear 0s infinite;
+  }
+}
+
+

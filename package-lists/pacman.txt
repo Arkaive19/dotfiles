@@ -93,6 +93,7 @@ openssh
 otf-monocraft
 pamixer
 pandoc-cli
+paru
 pavucontrol
 peaclock
 perl-image-exiftool
