@@ -14,16 +14,19 @@ bluez-utils
 brightnessctl
 btop
 btrfs-progs
+bun
 cava
 cbonsai
 celluloid
-cheese
 cliphist
 cmatrix
 cmus
 code
+cpio
 ddcutil
+deno
 devil
+discordo-git
 dkms
 dosfstools
 dunst
@@ -35,6 +38,7 @@ fastfetch
 figlet
 firefox
 flatpak
+fuse2
 fzf
 gdb
 git
@@ -52,6 +56,8 @@ hypridle
 hyprland
 hyprlock
 hyprpicker
+hyprshot
+hyprsunset
 imagemagick
 inotify-tools
 iwd
@@ -73,6 +79,7 @@ linux-zen-headers
 linuxconsole
 lua51
 man-db
+mindustry
 minesweeper-cli-git
 moreutils
 mpv
@@ -88,6 +95,7 @@ noto-fonts-emoji
 nvidia-open-dkms
 nvidia-settings
 nwg-look
+obs-studio
 openal
 openssh
 otf-monocraft
@@ -156,7 +164,6 @@ wl-clipboard
 wlogout
 wofi
 wpa_supplicant
-wvkbd
 x11vnc
 xdg-desktop-portal-hyprland
 xdg-utils

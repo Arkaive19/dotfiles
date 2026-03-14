@@ -7,14 +7,15 @@ fake=$(eww active-windows | grep -c "fakecorner")
 if [ "$bar" -eq 0 ] && [ "$fake" -eq 0 ]; then
   eww open bar
   eww open fakecorner
-
+  hyprctl keyword general:gaps_out 10 5 10 5
 # both open
 elif [ "$bar" -eq 1 ] && [ "$fake" -eq 1 ]; then
   eww close fakecorner
   eww close bar
-
+  hyprctl keyword general:gaps_out 4
 # mixed state → just toggle both
 else
   eww close bar
   eww close fakecorner
+  hyprctl keyword general:gaps_out 4
 fi

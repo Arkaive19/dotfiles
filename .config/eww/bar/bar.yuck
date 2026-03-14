@@ -266,6 +266,7 @@
   :stacking "bottom"
   :exclusive false
   :monitor "0"
+  :namespace "eww-bar-filler"
   :wm-ignore false
   (box 
     :class "fakecorner"
@@ -297,8 +298,9 @@
 (defwindow bar
   :monitor "0"
   :stacking "fg"
-  :geometry (geometry :x "0%" :y "0%" :width "25px" :height "100%" :anchor "center left")
-  :reserve (struts :distance "20px" :side "left")
+  :geometry (geometry :x "0%" :y "0%" :width "2%" :height "100%" :anchor "center left")
   :exclusive true
+  :reserve (struts :distance "20px" :side "right")
+  :namespace "eww-bar"
 (bar-widget))
 
