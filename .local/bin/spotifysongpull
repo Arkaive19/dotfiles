@@ -1,16 +1,20 @@
 #!/usr/bin/env bash
 
-PLAYLIST_URL="https://open.spotify.com/playlist/5YySV4fMfnRahWgXQXcKVJ?si=rJv6KgliTT609BvCdsyTOg"
-MUSIC_DIR="$HOME/Music"
+PLAYLIST_URL="https://open.spotify.com/playlist/5YySV4fMfnRahWgXQXcKVJ"
+MUSIC_DIR="/home/arkaive19/Music"
 
 mkdir -p "$MUSIC_DIR"
 
-echo "› Downloading playlist via spotdl (YouTube Music resolver)..."
-
 ulimit -n 65535
 
-spotify_dl \
-  -l "$PLAYLIST_URL" \
-  -o "$MUSIC_DIR"
+echo "› Downloading playlist via spotdl (YouTube Music resolver)..."
+
+spotdl download "$PLAYLIST_URL" \
+  --output "$MUSIC_DIR/{artist} - {title}.{output-ext}" \
+  --format mp3 \
+  --bitrate 320k \
+  --threads 1 \
+  --overwrite skip \
+  --user-auth
 
 ulimit -n 1024

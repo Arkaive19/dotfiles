@@ -31,7 +31,7 @@
     :geometry
      (geometry :x "0%"
                :y "3%" 
-               :anchor "top center"
+               :anchor "center"
      )
     :wm-ignore true
     :monitor "0"

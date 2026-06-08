@@ -255,21 +255,76 @@
   )
 )
 
-(defwindow fakecorner
+(defwindow fakecorner-box-1
   :geometry (geometry 
               :x "0%"
               :y "0%"
-              :width "98%"
-              :height "100%"
-              :anchor "bottom left")
+              :width "97%"
+              :height "2%"
+              :anchor "top left")
               
   :stacking "bottom"
-  :exclusive false
   :monitor "0"
   :namespace "eww-bar-filler"
   :wm-ignore false
-  (box 
-    :class "fakecorner"
+       (box :orientation "h"
+            :class "fakecorner1"
+            (high)
+       )
+)
+
+(defwindow fakecorner-box-2
+  :geometry (geometry 
+              :x "0%"
+              :y "0%"
+              :width "97%"
+              :height "2%"
+              :anchor "bottom left")
+              
+  :stacking "bottom"
+  :monitor "0"
+  :namespace "eww-bar-filler"
+  :wm-ignore false
+       (box :orientation "h"
+            :class "fakecorner2"
+            (low)
+       )
+)
+
+(defwindow fakecorner-box-3
+  :geometry (geometry :x "0%" :y "0%" :width "0.25%" :height "100%" :anchor "center right")
+  :stacking "bottom"
+  :monitor "0"
+  :namespace "eww-bar-filler"
+  :wm-ignore false
+       (box :orientation "v"
+            :class "fakecorner3"
+            (back)
+       )
+)
+
+
+(defwidget high []
+  (box :orientation "v"
+       :space-evenly false
+       :class "bar-high"
+  
+  )
+)
+
+(defwidget back []
+  (box :orientation "v"
+       :space-evenly false
+       :class "bar-right"
+  
+  )
+)
+
+(defwidget low []
+  (box :orientation "v"
+       :space-evenly false
+       :class "bar-low"
+  
   )
 )
 
@@ -300,7 +355,7 @@
   :stacking "fg"
   :geometry (geometry :x "0%" :y "0%" :width "2%" :height "100%" :anchor "center left")
   :exclusive true
-  :reserve (struts :distance "20px" :side "right")
+ ; :reserve (struts :distance "2000" :side "right")
   :namespace "eww-bar"
 (bar-widget))
 
