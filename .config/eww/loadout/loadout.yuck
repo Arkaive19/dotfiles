@@ -166,22 +166,61 @@
         )
         (box :orientation "h"
              :class "panel-end"
-             :style "background-image: url('${music-art}')"
-              (overlay
-                (scroll :hscroll true :vscroll true
-                  (image :halign "end"
-                         :valign "end"
-                         :class "disc"
-                         :path {"/home/arkaive19/.config/eww/loadout/scripts/vinyl.png"}
-                         :image-width {200}
-                         :image-height {100}
-                         :style "
-                            animation-play-state: ${ music-status == 'Playing' ? 'running' : 'paused'};
-                            -gtk-icon-transform: rotate(0deg);
-                            animation-duration: 3s;
-                      ")
-              )
-              )
+             :style "background-image: url('${music-art}')" 
+                (scroll :hscroll true
+                        :vscroll true
+                        :vexpand false
+                        :hexpand false
+                        :class "test"
+                        :active true
+                         (box :orientation "h"
+                              :space-evenly false
+                               (box :class "music-pad-left"
+                                    :orientation "v"
+                                    :space-evenly false
+                                    :spacing 10
+                               			(eventbox	:cursor "pointer"
+                                        				(button	:class "mini-player-previous"
+                                                        :halign "start"
+                                                        :valign "start"
+            			  		                                :onclick "./player/scripts/MediaControl --previous"
+  		  	    		                                       "󰒮"
+  	  		    	                                )
+    			                          )
+                      		        	(eventbox	:cursor "pointer"
+          		  		                           (button :class "mini-player-toggle"
+                                                       :halign "start"
+                                                       :valign "start"
+         			                                         :onclick "./player/scripts/MediaControl --toggle"
+  		          			                                  {music-status == "Playing" ? "󰏤" : music-status == "Paused" ? "󰐊" : "󰓛"}
+   			  	                                   )
+  		  	                          )
+	                              		(eventbox :cursor "pointer"
+  		                                         (button :class "mini-player-next"
+                                                       :halign "start"
+                                                       :valign "start"
+  					                                           :onclick "./player/scripts/MediaControl --next"
+  					                                            "󰒭"
+				                                       )
+                                    )
+                               )
+                               (box :orientation "v"
+                                    :space-evenly false
+                                     (label :class "music-pad-right")
+                                     (image :halign "end"
+                                            :valign "end"
+                                            :class "disc"
+                                            :path {"/home/arkaive19/.config/eww/loadout/scripts/vinyl.png"}
+                                            :image-width {220}
+                                            :image-height {100}
+                                            :style "
+                                              animation-play-state: ${ music-status == 'Playing' ? 'running' : 'paused'};
+                                              -gtk-icon-transform: rotate(0deg);
+                                              animation-duration: 3s;"
+                                     )                         
+                               )
+                         )
+                )
          )
   )
 )

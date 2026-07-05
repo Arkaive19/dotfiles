@@ -1,9 +1,13 @@
 lib
+claude-code
+codex
+arkaive
 gtop
 hkse
 http-server
 mapscii
 node-gyp
+nodemon
 nopt
 npm
 nvm

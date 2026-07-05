@@ -110,6 +110,7 @@ calendar {
     background-color: $background;
     margin: 0em 0.4em 0.4em 0em;
     border-radius: 10px;
+    padding:0em;
   }
 }
 
@@ -193,9 +194,38 @@ calendar {
 }
 
 .panel-end{
- background: $background,
-      url("/home/arkaive19/.config/Wallpapers/Scripts/current");
+
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+
+.test{
+  background:
+    linear-gradient(
+      to right,
+      rgba(#191919, 1),
+      rgba(#262626, 0.5)
+  );
+  border-radius:10px;
+}
+
+.music-pad-left{
+  min-width:5em;
+  padding:0.3em 0em 0em 0em;
+  .mini-player-previous,
+  .mini-player-toggle,
+  .mini-player-next{
+    label{
+      font-size:1.3rem;
+     font-weight:bold; 
+   }
+  }
+
+}
+
+.music-pad-right{
+  min-height:3em;
 }
