@@ -22,6 +22,7 @@ cava
 cbonsai
 celluloid
 cliphist
+cloudflared
 cmatrix
 cmus
 code
@@ -58,6 +59,7 @@ grimblast-git
 grub
 grub-theme-minegrub-world-selection-git
 gst-plugin-pipewire
+gst-plugins-bad
 gtop
 gum
 gvfs
@@ -71,6 +73,7 @@ hyprshot
 hyprsunset
 imagemagick
 inotify-tools
+intellij-idea-ultimate-edition
 iw
 iwd
 java-runtime-common
@@ -140,6 +143,7 @@ python-pywal16
 pywal-spicetify
 qbittorrent
 qt5-wayland
+qt6-5compat
 qt6-virtualkeyboard
 qt6-wayland
 quickshell
