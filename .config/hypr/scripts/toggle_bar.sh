@@ -23,7 +23,7 @@ elif [ "$bar" -eq 1 ] && [ "$fake1" -eq 1 ]; then
 else
   eww close fakecorner-box-1
   eww close fakecorner-box-2
-  eww open fakecorner-box-3
+  eww close fakecorner-box-3
   eww close bar
   hyprctl keyword general:gaps_out 4
 fi

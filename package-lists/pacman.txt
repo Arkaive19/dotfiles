@@ -2,7 +2,6 @@ acpi
 alacritty
 alsa-utils
 amd-ucode
-android-studio
 ani-cli
 aria2
 awww
@@ -23,11 +22,13 @@ cbonsai
 celluloid
 cliphist
 cloudflared
+cmake
 cmatrix
 cmus
 code
 cpio
 curd-git
+darktable
 ddcutil
 deno
 devil
@@ -35,6 +36,7 @@ discordo-git
 dkms
 dosfstools
 dunst
+dwarfs
 efibootmgr
 evtest
 eww
@@ -45,9 +47,11 @@ fastfetch
 fcitx5
 fcitx5-configtool
 fcitx5-m17n
+fd
 figlet
 firefox
 flatpak
+fuse-overlayfs
 fuse2
 fzf
 gdb
@@ -79,6 +83,7 @@ iwd
 java-runtime-common
 jdk-openjdk
 jdk21-openjdk
+jmtpfs
 jq
 kitty
 kooha
@@ -96,7 +101,6 @@ linuxconsole
 lua51
 man-db
 mesa-utils
-mindustry
 minesweeper-cli-git
 moreutils
 mpv
@@ -106,13 +110,16 @@ neovim
 network-manager-applet
 networkmanager
 nim
+nmap
 nodejs-mapscii
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
+npm
 nvidia-open-dkms
 nvidia-settings
+nvtop
 nwg-look
 obs-studio
 oneko
@@ -132,12 +139,14 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 playerctl
+plocate
 pnpm
 polkit-gnome
 polkit-kde-agent
 postgresql
 prettier
 proxychains-ng
+python-pip
 python-pipx
 python-pywal16
 pywal-spicetify
@@ -177,6 +186,7 @@ tty-clock
 tumbler
 umu-launcher
 unrar
+unrpa
 unzip
 uwsm
 vesktop-git
@@ -203,7 +213,6 @@ xorg-xhost
 xorg-xinit
 xterm
 yay
-yazi
 zinit
 zip
 zoxide

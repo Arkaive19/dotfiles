@@ -1,7 +1,7 @@
 (defpoll volume :interval "0.1s" "pamixer --get-volume")
 (defpoll brightness :interval "0.1s" "brightnessctl g")
 
-(defpoll lithour :interval "30m" "date +%H")
+(defpoll lithour :interval "30s" "date +%H")
 (defpoll litmin :interval "30s" "date +%M")
 
 
