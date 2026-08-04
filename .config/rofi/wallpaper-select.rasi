@@ -42,9 +42,9 @@ frame {
 // Lists //
 listview {
     enabled:                     true;
-    spacing:                     4em;
-    padding:                     4em;
-    columns:                     4;
+    spacing:                     2em;
+    padding:                     2em;
+    columns:                     5;
     lines:                       1;
     dynamic:                     true;
     fixed-height:                false;
@@ -73,6 +73,7 @@ element {
 element selected.normal {
     background-color:            @select-bg;
     text-color:                  @select-fg;
+       border-radius: 3em;
 }
 element-icon {
     expand: true;          // fills parent element

@@ -2,7 +2,6 @@ lib
 claude-code
 codex
 arkaive
-gtop
 hkse
 http-server
 mapscii

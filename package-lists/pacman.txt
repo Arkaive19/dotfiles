@@ -27,6 +27,7 @@ cmatrix
 cmus
 code
 cpio
+cpupower
 curd-git
 darktable
 ddcutil
@@ -35,6 +36,7 @@ devil
 discordo-git
 dkms
 dosfstools
+drm_info-git
 dunst
 dwarfs
 efibootmgr
@@ -64,7 +66,6 @@ grub
 grub-theme-minegrub-world-selection-git
 gst-plugin-pipewire
 gst-plugins-bad
-gtop
 gum
 gvfs
 htop
@@ -194,6 +195,7 @@ viewnior
 vim
 vulkan-tools
 waybar
+wayland-utils
 wget
 wine
 winetricks
@@ -203,12 +205,10 @@ wl-clipboard
 wlogout
 wofi
 wpa_supplicant
-x11vnc
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-wlr
 xdg-utils
 xorg-server
-xorg-server-xvfb
 xorg-xhost
 xorg-xinit
 xterm
