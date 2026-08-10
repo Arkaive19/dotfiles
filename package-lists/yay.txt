@@ -195,6 +195,7 @@ viewnior
 vim
 vulkan-tools
 waybar
+waydroid
 wayland-utils
 wget
 wine

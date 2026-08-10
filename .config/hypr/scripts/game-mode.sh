@@ -1,79 +1,67 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-blitz_mode=$(hyprctl getoption animations:enabled | awk 'NR==1{print $2}')
+# Dropped -e so missing/dead daemons or empty process list matches never crash the loop halfway
+set -uo pipefail
 
-if [ "$blitz_mode" = 1 ]; then
-  # Enable Blitz Mode 🚀
+STATE="$HOME/.cache/blitz-mode"
 
-  sudo cpupower frequency-set -g performance >/dev/null
+enable() {
+  sudo cpupower frequency-set -g performance >/dev/null 2>&1 || true
 
-  hyprctl --batch "\
-        keyword animations:enabled 0; \
-        keyword decoration:drop_shadow 0; \
-        keyword decoration:blur:enabled 0; \
-        keyword decoration:rounding 0; \
-        keyword general:gaps_in 0; \
-        keyword general:gaps_out 0; \
-        keyword general:border_size 1; \
-        keyword general:allow_tearing 1; \
-        keyword misc:disable_hyprland_logo 1; \
-        keyword misc:disable_splash_rendering 1; \
-        keyword decoration:inactive_opacity 1; \
-        keyword decoration:active_opacity 1"
-  #!/bin/bash
+  # Native run-time keywords using dot-notation. This bypasses the static table locking bug
+  hyprctl keyword animations.enabled 0
+  hyprctl keyword decoration.rounding 0
+  hyprctl keyword decoration.inactive_opacity 1.0
+  hyprctl keyword decoration.active_opacity 1.0
+  hyprctl keyword decoration.blur.enabled false
+  hyprctl keyword general.gaps_in 0
+  hyprctl keyword general.gaps_out 0
+  hyprctl keyword general.border_size 1
+  hyprctl keyword general.allow_tearing true
+  hyprctl keyword misc.disable_hyprland_logo true
+  hyprctl keyword misc.disable_splash_rendering true
 
-  blitz_mode=$(hyprctl getoption animations:enabled | awk 'NR==1{print $2}')
+  # Silently handle applications without letting failures kill your shell script timeline
+  pkill -x awww-daemon >/dev/null 2>&1 || true
+  swaync-client -D >/dev/null 2>&1 || true
+  pkill -x hypridle >/dev/null 2>&1 || true
 
-  if [ "$blitz_mode" = 1 ]; then
-    # Enable Blitz Mode
-    sudo cpupower frequency-set -g performance
+  touch "$STATE"
+  notify-send "🚀 Blitz Mode" "Enabled"
+}
 
-    hyprctl --batch "\
-        keyword animations:enabled 0; \
-        keyword decoration:drop_shadow 0; \
-        keyword decoration:blur:enabled 0; \
-        keyword decoration:rounding 0; \
-        keyword general:gaps_in 0; \
-        keyword general:gaps_out 0; \
-        keyword general:border_size 1; \
-        keyword general:allow_tearing 1; \
-        keyword misc:disable_hyprland_logo 1; \
-        keyword misc:disable_splash_rendering 1"
+disable() {
+  sudo cpupower frequency-set -g powersave >/dev/null 2>&1 || true
 
-    pkill swww
-    notify-send "Blitz Mode" "Enabled 🚀"
-  else
-    # Disable Blitz Mode
-    sudo cpupower frequency-set -g powersave
-
-    hyprctl reload
-    swww-daemon &
-
-    notify-send "Blitz Mode" "Disabled 🔋"
-  fi
-
-  # Stop wallpaper daemon
-  pkill awww 2>/dev/null
-
-  # Pause notifications and idle timer
-  dunstctl set-paused true 2>/dev/null
-  pkill hypridle 2>/dev/null
-
-  notify-send "Blitz Mode" "Enabled 🚀"
-
-else
-  # Disable Blitz Mode 🔋
-
-  sudo cpupower frequency-set -g powersave >/dev/null
-
+  # Cleanly resets all flat keyword alterations back to your static hyprland.lua values
   hyprctl reload
 
-  # Restore wallpaper daemon
-  pgrep awww-daemon >/dev/null || awww-daemon &
+  # Open the notifications tray context back up
+  swaync-client -d >/dev/null 2>&1 || true
+  sleep 0.1
 
-  # Restore notifications and idle
-  dunstctl set-paused false 2>/dev/null
-  hypridle &
+  # Safely check and spawn background dependencies without triggering execution halts
+  if ! pgrep -x awww-daemon >/dev/null 2>&1; then
+    awww-daemon &
+  fi
 
-  notify-send "Blitz Mode" "Disabled 🔋"
+  if ! pgrep -x hypridle >/dev/null 2>&1; then
+    hypridle &
+  fi
+
+  rm -f "$STATE"
+  notify-send "🔋 Blitz Mode" "Disabled"
+}
+
+mkdir -p "$(dirname "$STATE")"
+
+if [[ -f "$STATE" ]]; then
+  # Pop notification and cycle swaync toggle cleanly
+  notify-send "dis" "Returning to normal settings..."
+  sleep 0.05
+  swaync-client >/dev/null 2>&1 || true
+
+  disable
+else
+  enable
 fi
