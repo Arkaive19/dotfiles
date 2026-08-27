@@ -99,9 +99,11 @@ linux-headers
 linux-zen
 linux-zen-headers
 linuxconsole
+love
 lua51
 man-db
 mesa-utils
+min-browser-bin
 minesweeper-cli-git
 moreutils
 mpv
@@ -197,6 +199,7 @@ vulkan-tools
 waybar
 waydroid
 wayland-utils
+wev
 wget
 wine
 winetricks
