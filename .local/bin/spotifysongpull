@@ -14,7 +14,6 @@ spotdl download "$PLAYLIST_URL" \
   --format mp3 \
   --bitrate 320k \
   --threads 1 \
-  --overwrite skip \
-  --user-auth
+  --overwrite skip
 
 ulimit -n 1024
