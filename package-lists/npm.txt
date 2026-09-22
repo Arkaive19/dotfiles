@@ -1,6 +1,4 @@
 lib
-claude-code
-codex
 arkaive
 hkse
 http-server

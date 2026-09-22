@@ -161,6 +161,7 @@ qt6-virtualkeyboard
 qt6-wayland
 quickshell
 rofi
+rpatool-git
 rsync
 sddm
 sdl12-compat

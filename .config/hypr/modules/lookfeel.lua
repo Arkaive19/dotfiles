@@ -6,8 +6,8 @@ local border_module = require("modules/border")
 -- 1. General Config Layout Matrix
 hl.config({
 	general = {
-		gaps_in = 2,
-		border_size = 1,
+		gaps_in = 4,
+		border_size = 0,
 		gaps_out = { top = 11, right = 15, bottom = 11, left = 4 },
 		resize_on_border = true,
 		allow_tearing = false,
@@ -24,7 +24,7 @@ hl.config({
 		rounding = 20,
 		rounding_power = 2,
 		active_opacity = 1.0,
-		inactive_opacity = 1.0,
+		inactive_opacity = 0.5,
 		shadow = {
 			enabled = true,
 			range = 4,
