@@ -122,6 +122,7 @@ noto-fonts-emoji
 noto-fonts-extra
 npm
 nvidia-open-dkms
+nvidia-prime
 nvidia-settings
 nvtop
 nwg-look

@@ -141,4 +141,9 @@ hl.bind(
 	hl.dsp.exec_cmd("java -jar /home/arkaive19/Games/Minecraft/LegacyLauncher/LegacyLauncher.jar"),
 	{ locked = true }
 )
+
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
+
 hl.bind("XF86Launch6", hl.dsp.exec_cmd("swayosd-client --input-volume mute-toggle"), { locked = true })
