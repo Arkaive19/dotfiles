@@ -1,18 +1,19 @@
-.config/Wallpapers/**/*.png
-.config/Wallpapers/**/*.jpg
-.config/Wallpapers/**/*.jpeg
-.config/Wallpapers/**/*.gif
-.config/Wallpapers/**/*.mp4
-.config/Wallpapers/**/*.webp
-.config/Wallpapers/**/*.bmp
-.config/Wallpapers/**/*.mp4
-.config/Wallpapers/**/*.mkv
-.config/Wallpapers/**/*.webm
-.config/Wallpapers/**/*.mov
-.config/Wallpapers/**/*.avi
-tmp.txt
-
-# Wallpaper media — keep these out of git
+# Ignore all wallpaper media
 .config/Wallpapers/images/
 .config/Wallpapers/thumbnails/
 .config/Wallpapers/vids/
+.config/Wallpapers/*.png
+.config/Wallpapers/*.jpg
+.config/Wallpapers/*.jpeg
+.config/Wallpapers/*.gif
+.config/Wallpapers/*.mp4
+.config/Wallpapers/*.webp
+.config/Wallpapers/*.bmp
+.config/Wallpapers/*.mkv
+.config/Wallpapers/*.webm
+.config/Wallpapers/*.mov
+.config/Wallpapers/*.zip
+.config/Wallpapers/*.avi
+
+tmp.txt
+

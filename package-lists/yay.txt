@@ -58,6 +58,7 @@ fuse2
 fzf
 gdb
 git
+git-filter-repo
 go
 google-chrome
 gparted
